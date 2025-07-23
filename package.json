@@ -2,7 +2,7 @@
   "info": {
     "name": "Tshwane Sporting API",
     "_postman_id": "12345-abcde-67890-fghij",
-    "description": "API endpoints for football team backend",
+    "description": "API endpoints for football team backend.\n\n⚙️ To start the backend server:\n- Run `npm install` to install dependencies\n- Use `npm run dev` for development with auto-reload\n- Use `npm start` for production\n\nMake sure you set environment variables like MONGO_URI and JWT_SECRET.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
