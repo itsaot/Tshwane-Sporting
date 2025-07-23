@@ -1,0 +1,135 @@
+{
+  "info": {
+    "name": "Football Backend API",
+    "_postman_id": "12345-abcde-67890-fghij",
+    "description": "API endpoints for football team backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"admin@example.com\",\"password\":\"adminpass\"}"
+            },
+            "url": { "raw": "{{base_url}}/api/auth/login", "host": ["{{base_url}}"], "path": ["api", "auth", "login"] }
+          }
+        },
+        {
+          "name": "Register User (Admin only)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"John Player\",\"email\":\"john@example.com\",\"password\":\"123456\",\"role\":\"player\"}"
+            },
+            "url": { "raw": "{{base_url}}/api/auth/register", "host": ["{{base_url}}"], "path": ["api", "auth", "register"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Players",
+      "item": [
+        {
+          "name": "Get All Players",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/api/players", "host": ["{{base_url}}"], "path": ["api", "players"] }
+          }
+        },
+        {
+          "name": "Get Player by ID",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/api/players/{{playerId}}", "host": ["{{base_url}}"], "path": ["api", "players", "{{playerId}}"] }
+          }
+        },
+        {
+          "name": "Update Player Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"Updated Name\"}"
+            },
+            "url": { "raw": "{{base_url}}/api/players/{{playerId}}", "host": ["{{base_url}}"], "path": ["api", "players", "{{playerId}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Staff",
+      "item": [
+        {
+          "name": "Get All Staff (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/api/staff", "host": ["{{base_url}}"], "path": ["api", "staff"] }
+          }
+        },
+        {
+          "name": "Delete Staff (Admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/api/staff/{{staffId}}", "host": ["{{base_url}}"], "path": ["api", "staff", "{{staffId}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Gallery",
+      "item": [
+        {
+          "name": "Get Gallery",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/api/gallery", "host": ["{{base_url}}"], "path": ["api", "gallery"] }
+          }
+        },
+        {
+          "name": "Upload Image (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "image", "type": "file", "src": "" },
+                { "key": "caption", "value": "Team photo" }
+              ]
+            },
+            "url": { "raw": "{{base_url}}/api/gallery", "host": ["{{base_url}}"], "path": ["api", "gallery"] }
+          }
+        },
+        {
+          "name": "Like Image",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/api/gallery/{{imageId}}/like", "host": ["{{base_url}}"], "path": ["api", "gallery", "{{imageId}}", "like"] }
+          }
+        }
+      ]
+    }
+  ]
+}
